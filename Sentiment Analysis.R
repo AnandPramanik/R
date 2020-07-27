@@ -24,7 +24,6 @@ tidy_data <- austen_books() %>%
   unnest_tokens(word, text)
 
 
-#We have performed the tidy operation on our text such that each row contains a single word. We will now make use of the "bing" lexicon to and implement filter() over the words that correspond to joy. We will use the book Sense and Sensibility and derive its words to implement out sentiment analysis model.
 positive_senti <- get_sentiments("bing") %>%
   filter(sentiment == "positive")
 tidy_data %>%
@@ -33,7 +32,7 @@ tidy_data %>%
   count(word, sort = TRUE)
 
 
-#From our above result, we observe many positive words like "good", "happy", "love" etc. In the next step, we will use spread() function to segregate our data into separate columns of positive and negative sentiments. We will then use the mutate() function to calculate the total sentiment, that is, the difference between positive and negative sentiment.
+
 library(tidyr)
 bing <- get_sentiments("bing")
 Emma_sentiment <- tidy_data %>%
